@@ -23,7 +23,7 @@ tickers = ['AMAZON', 'APPLE', 'google', 'TESLA', 'GOLD', 'CL1 COMB Comdty', 'NG1
            'TED SPREAD JPN', 'TED SPREAD US', 'TED SPREAD EUR', 'renminbiusd', 'yenusd', 'eurodollar', 'gbpusd', 
            'active_address_count', 'addr_cnt_bal_sup_10K', 'addr_cnt_bal_sup_100K', 'miner-revenue-native-unit', 
            'miner-revenue-USD', 'mvrv', 'nvt', 'tx-fees-btc', 'tx-fees-usd']
-file_paths = [f'data/{ticker}.xlsx' for ticker in tickers]
+file_paths = [f'data/{ticker}.csv' for ticker in tickers]
 
 btc = load_data(btc_file)
 btc = preprocess_data(btc)
