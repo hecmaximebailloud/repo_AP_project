@@ -17,7 +17,7 @@ from scripts.model_training import train_random_forest, train_rf_model
 from scripts.model_evaluation import evaluate_model
 
 # Load and preprocess data
-btc_file = 'data/btc.xlsx'
+btc_file = 'data/btc.csv'
 tickers = ['AMAZON', 'APPLE', 'google', 'TESLA', 'GOLD', 'CL1 COMB Comdty', 'NG1 COMB Comdty', 'CO1 COMB Comdty', 
            'DowJones', 'Nasdaq', 'S&P', 'Cac40', 'ftse', 'NKY', 'EURR002W', 'DEYC2Y10', 'USYC2Y10', 'JPYC2Y10', 
            'TED SPREAD JPN', 'TED SPREAD US', 'TED SPREAD EUR', 'renminbiusd', 'yenusd', 'eurodollar', 'gbpusd', 
