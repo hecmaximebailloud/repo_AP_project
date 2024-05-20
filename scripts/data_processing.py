@@ -1,11 +1,17 @@
 import pandas as pd
 
 def load_data(file_path):
-    return pd.read_csv(file_path)
+    data = pd.read_excel(file_path)
+    # Ensure 'Date' column is in datetime format
+    data['Date'] = pd.to_datetime(data['Date'])
+    return data
 
 def preprocess_data(btc):
-    start_date = pd.to_datetime('09/01/2011')
-    end_date = pd.to_datetime('24/12/2023')
+    start_date = pd.to_datetime('2011-09-01')
+    end_date = pd.to_datetime('2023-12-24')
+    
+    # Ensure 'Date' column is in datetime format
+    btc['Date'] = pd.to_datetime(btc['Date'])
 
     btc_range = btc[(btc['Date'] >= start_date) & (btc['Date'] <= end_date)]
     btc = btc_range.reset_index(drop=True)
