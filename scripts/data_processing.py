@@ -3,15 +3,15 @@ import pandas as pd
 def load_data(file_path):
     data = pd.read_csv(file_path)
     # Ensure 'Date' column is in datetime format
-    data['Date'] = pd.to_datetime(data['Date'])
+    data['Date'] = pd.to_datetime(data['Date'], errors='coerce')
     return data
 
 def preprocess_data(btc):
     start_date = pd.to_datetime('2011-09-01')
     end_date = pd.to_datetime('2023-12-24')
-    
+
     # Ensure 'Date' column is in datetime format
-    btc['Date'] = pd.to_datetime(btc['Date'])
+    btc['Date'] = pd.to_datetime(btc['Date'], errors='coerce')
 
     btc_range = btc[(btc['Date'] >= start_date) & (btc['Date'] <= end_date)]
     btc = btc_range.reset_index(drop=True)
@@ -28,7 +28,7 @@ def preprocess_all_data(all_data, start_date):
     keep_columns = ['Date', 'Dernier Prix']
     for i, element in enumerate(all_data):
         element = element[keep_columns].copy()
-        element['Date'] = pd.to_datetime(element['Date'])
+        element['Date'] = pd.to_datetime(element['Date'], errors='coerce')
         element.drop(element[element['Date'] < start_date].index, inplace=True)
         all_data[i] = element
     return all_data
@@ -43,3 +43,4 @@ def merge_datasets(all_data):
     merged_df = pd.concat(all_data, axis=1)
     merged_df = merged_df.loc[:,~merged_df.columns.duplicated()]
     return merged_df
+
